@@ -26,7 +26,9 @@ import { useDeleteProduct } from '@/hooks/products/use-delete-product'
 export function ProductsView() {
   const [searchQuery, setSearchQuery] = useState('')
 
-  const { data: products } = useProducts()
+  const { data } = useProducts()
+  const products = data?.products
+
   const { mutate: deleteProductMutate } = useDeleteProduct()
 
   const handleDeleteProduct = (productId: string) => {
