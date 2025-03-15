@@ -13,14 +13,14 @@ import { BrandsView } from '@/pages/admin/brands/page'
 import { CategoriesView } from '@/pages/admin/categories/page'
 import { ImagesView } from '@/pages/admin/images/page'
 import EditProduct from '@/pages/admin/products/edit/page'
+import ProductListPage from '@/pages/store/products/page'
 
 const AppRoutes = () => {
   return (
     <Router>
       <Routes>
-
         <Route path="/" element={<Layout />}>
-          <Route index element={<h1>home</h1>} />
+          <Route index element={<ProductListPage />} />
           <Route path="/products" element={<h1>Products</h1>} />
           <Route path="/product/:id" element={<h1>produto/id</h1>} />
           {/* Redirects routes not found to Home #TODO: 404 */}
@@ -36,7 +36,6 @@ const AppRoutes = () => {
           <Route path="/admin/categories" element={<CategoriesView />} />
           <Route path="/admin/images" element={<ImagesView />} />
         </Route>
-
       </Routes>
     </Router>
   )
