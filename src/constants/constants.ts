@@ -1,4 +1,4 @@
-export const storerageURL = 'https://pgfbhiwwlzskeydalezn.supabase.co/storage/v1/object/public/photos//';
+export const storageURL = 'https://pgfbhiwwlzskeydalezn.supabase.co/storage/v1/object/public/photos//';
 
 
 export const genders = [
