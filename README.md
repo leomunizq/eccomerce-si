@@ -1,72 +1,90 @@
-# React + TypeScript + Vite
+# Progetto 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Descrizione
 
-Currently, two official plugins are available:
+Questo progetto implementa un'applicazione web per gestire un sistema di archivio prodotti. L'applicazione permette di:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Visualizzare una lista di prodotti con possibilità di filtrarli per nome e per caratteristiche specifiche.
 
-## Expanding the ESLint configuration
+- Consultare una pagina dedicata al dettaglio completo di ciascun prodotto.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Utilizzare moduli per l'inserimento e la modifica dei prodotti.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname
-    }
-  }
-})
+L'applicazione è responsive e fruibile sia su desktop che su dispositivi mobili.
+
+## Stack Tecnologico
+
+Il progetto è realizzato utilizzando:
+
+- React 19 con Vite per l'ambiente di sviluppo e build.
+
+- React Query (TanStack Query) per la gestione efficiente delle richieste API e dello stato del server.
+
+- Axios per effettuare richieste HTTP.
+
+- Supabase come backend as a service e gestione dei dati.
+
+- React Router DOM per la navigazione tra pagine e rotte del progetto.
+
+- Tailwind CSS per lo stile e layout responsive.
+
+Struttura del Progetto
+
+```
+📦src
+ ┣ 📂assets
+ ┣ 📂components
+ ┃ ┣ 📂brand
+ ┃ ┣ 📂layout
+ ┃ ┣ 📂products
+ ┃ ┣ 📂ui
+ ┣ 📂constants
+ ┣ 📂hooks
+ ┣ 📂lib
+ ┣ 📂pages
+ ┃ ┣ 📂admin
+ ┃ ┗ 📂store
+ ┣ 📂routes
+ ┣ 📂schema
+ ┣ 📂services
+ ┃ ┣ 📂brands
+ ┃ ┣ 📂categories
+ ┃ ┣ 📂colors
+ ┃ ┣ 📂images
+ ┃ ┗ 📂products
+ ┣ 📂store
+ ┣ 📂styles
+ ┣ 📂tests
+ ┣ 📂types
+ ┣ 📜App.css
+ ┣ 📜index.css
+ ┣ 📜main.tsx
+ ┗ 📜vite-env.d.ts
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Avvio del Progetto
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Installazione
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules
-  }
-})
+npm install
+
+
+## Variabili d'ambiente
+
+Crea un file .env.local nella root del progetto con le seguenti variabili:
+
+```
+VITE_SUPABASE_URL=il-tuo-url-supabase
+VITE_SUPABASE_ANON_KEY=la-tua-chiave-anonima-supabase
 ```
 
-my-project/
-├── public/
-├── src/
-│ ├── assets/
-│ ├── components/ # Specific components or functionalities
-│ ├── ui/ # Basic and reusable components (e.g. Buttons, Inputs, Cards)
-│ ├── hooks/ # Customized hooks
-│ ├── lib/ # Libs configurations (e.g. supabaseClient, axios instance)
-│ ├── pages/ # Application pages
-│ ├── routes/ # Route configuration (React Router)
-│ ├── store/ # Zustand configuration (state management)
-│ ├── styles/ # Style files, Tailwind configuration, etc.
-│ └── tests/ # Examples of component tests (using React Testing Library/Jest)
-├── .eslintrc.js
-├── .prettierrc
-├── package.json
-└── vite.config.ts
+## Esecuzione in locale
+
+npm run dev
+
+
+## Testing
+
+Sono presenti test di esempio utilizzando Jest e React Testing Library. Per eseguire i test:
+
+npm run test
