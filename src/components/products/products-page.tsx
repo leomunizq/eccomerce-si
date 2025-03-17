@@ -1,7 +1,5 @@
 import type React from 'react'
-
 import { Search } from 'lucide-react'
-
 import { Input } from '@/components/ui/input'
 import ProductList from '@/components/products/product-list'
 import Pagination from '@/components/products/pagination'
@@ -10,6 +8,8 @@ import SecondaryFiltersSheet from '@/components/products/secondary-filters-sheet
 import { useProducts } from '@/hooks/products/use-products'
 import { SortDirection, SortKey, useUrlFilters } from '@/hooks/use-url-filters'
 import { SingleSortSelect } from './sort-order-filter'
+
+const PRODUCTS_PER_PAGE = 9
 
 export default function ProductsPage() {
   const { filters, setFilters } = useUrlFilters()
@@ -23,14 +23,10 @@ export default function ProductsPage() {
     minPrice: filters.priceRange.min,
     maxPrice: filters.priceRange.max,
     page: filters.page,
-    limit: 9,
+    limit: PRODUCTS_PER_PAGE,
     orderBy: filters.sort,
     orderDirection: filters.dir
   })
-  console.log(sneakersData);
-  
-
-  const PRODUCTS_PER_PAGE = 9
 
   const totalPages = Math.ceil((sneakersData?.total || 0) / PRODUCTS_PER_PAGE)
 
@@ -93,18 +89,17 @@ export default function ProductsPage() {
         </div>
       </div>
 
-      {/* Main Content */}
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
         {/* Main Filters (Desktop) */}
         <div className="hidden lg:block">
           <MainFilters filters={filters} onFilterChange={handleFilterChange} />
         </div>
 
-        {/* Products */}
         <div className="lg:col-span-3">
           <div className="flex justify-between items-center mb-4">
             <p className="text-muted-foreground">
-              Showing {sneakersData?.products.length} of {sneakersData?.total} sneakers
+              Showing {sneakersData?.products.length} of {sneakersData?.total}{' '}
+              sneakers
             </p>
           </div>
           {isLoading && (
@@ -114,7 +109,6 @@ export default function ProductsPage() {
           )}
           <ProductList products={sneakersData?.products} />
 
-          {/* Pagination */}
           {totalPages > 1 && (
             <div className="mt-8 flex justify-center">
               <Pagination

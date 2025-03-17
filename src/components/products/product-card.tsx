@@ -3,7 +3,8 @@ import { Product } from '@/services/products/list'
 
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { storerageURL } from '@/constants/constants'
+import { storageURL } from '@/constants/constants'
+import { Link } from 'react-router-dom'
 
 interface ProductCardProps {
   product: Product
@@ -11,10 +12,11 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   const imageSrc = product.images?.[0]?.image_url
-    ? `${storerageURL}${product.images?.[0]?.image_url}`
+    ? `${storageURL}${product.images?.[0]?.image_url}`
     : '/placeholder.svg'
   return (
-    <Card className="overflow-hidden group">
+    <Link to={`/product/${product.id}`}>
+    <Card className="overflow-hidden group shadow-none">
       <div className="relative aspect-square overflow-hidden">
         <img
           src={imageSrc}
@@ -42,5 +44,6 @@ export default function ProductCard({ product }: ProductCardProps) {
         </div>
       </CardContent>
     </Card>
+    </Link>
   )
 }
