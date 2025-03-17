@@ -18,7 +18,7 @@ export function AdminSidebar( ) {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <Sidebar variant="sidebar" collapsible="none">
+    <Sidebar variant="sidebar" collapsible="none" className="max-h-screen sticky top-0">
       <SidebarHeader className="border-b">
         <div className="flex h-16 items-center px-4">
           <ShoppingBag className="mr-2 h-6 w-6" />
