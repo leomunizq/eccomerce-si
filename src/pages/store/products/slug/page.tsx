@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useGetProductById } from '@/hooks/products/use-get-product'
 import { storageURL } from '@/constants/constants'
@@ -22,8 +22,10 @@ export default function ProductPage() {
     category: product?.category_id ? [product.category_id] : []
   })
 
-  const shuffled = shuffle(relatedProductsData?.products || [])
-  const randomProducts = shuffled.slice(0, 4)
+  const randomProducts = useMemo(() => {
+    const shuffled = shuffle(relatedProductsData?.products || [])
+    return shuffled.slice(0, 4)
+  }, [relatedProductsData?.products])  
 
   if (isLoading) {
     return <ProductLoading />
@@ -40,10 +42,10 @@ export default function ProductPage() {
   const decrementQuantity = () => setQuantity(prev => (prev > 1 ? prev - 1 : 1))
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <main className="flex-grow flex flex-col justify-between py-12">
+    <div className="flex flex-col min-h-screen">
+      <main className="flex flex-col justify-between flex-grow py-12">
         <div>
-          <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-12 lg:gap-16">
+          <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between lg:gap-16">
             <ProductImageGallery images={images} />
             <ProductInformation
               productName={product?.name || ''}
