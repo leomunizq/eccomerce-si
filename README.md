@@ -1,5 +1,7 @@
 # Progetto 
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/20c04e4d-927e-4f83-ae29-d3020c25650c/deploy-status)](https://app.netlify.com/sites/eccomerce-si/deploys)
+
 Descrizione
 
 Questo progetto implementa un'applicazione web per gestire un sistema di archivio prodotti. L'applicazione permette di:
