@@ -7,7 +7,6 @@ const Header = () => {
         <Link to="/" className="text-2xl font-bold">Lorem Ipsum Store</Link>
         <nav className="space-x-4">
           <Link to="/" className="hover:underline">Home</Link>
-          <Link to="/admin" className="hover:underline">Products</Link>
           <Link to="/admin" className="hover:underline">Admin</Link>
         </nav>
       </div>

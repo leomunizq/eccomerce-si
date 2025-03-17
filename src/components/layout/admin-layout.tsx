@@ -11,7 +11,7 @@ const AdminLayout = () => {
         <AdminSidebar />
 
         {/* Main content of the admin panel */}
-        <div className="flex-1 p-6 md:ml-48">
+        <div className="flex-1 p-6">
           <Outlet />
         </div>
       </div>
